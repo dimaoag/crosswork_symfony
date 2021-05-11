@@ -1,0 +1,113 @@
+{
+    "type": "project",
+    "license": "proprietary",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.0",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "ext-json": "*",
+        "ext-simplexml": "*",
+        "composer/package-versions-deprecated": "1.11.99.1",
+        "doctrine/annotations": "^1.12",
+        "doctrine/doctrine-bundle": "^2.3",
+        "doctrine/doctrine-migrations-bundle": "^3.1",
+        "doctrine/orm": "^2.8",
+        "elasticsearch/elasticsearch": "^7.11",
+        "guzzlehttp/guzzle": "^7.2",
+        "myclabs/php-enum": "^1.8",
+        "predis/predis": "^1.1",
+        "psr/http-message": "^1.0",
+        "symfony/amqp-messenger": "5.2.*",
+        "symfony/console": "5.2.*",
+        "symfony/dotenv": "5.2.*",
+        "symfony/flex": "^1.3.1",
+        "symfony/framework-bundle": "5.2.*",
+        "symfony/messenger": "5.2.*",
+        "symfony/monolog-bundle": "^3.6",
+        "symfony/proxy-manager-bridge": "5.2.*",
+        "symfony/security-bundle": "5.2.*",
+        "symfony/twig-bundle": "5.2.*",
+        "symfony/uid": "5.2.*",
+        "symfony/yaml": "5.2.*",
+        "webmozart/assert": "^1.10",
+        "zircote/swagger-php": "^3.1"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "^1.5",
+        "object-calisthenics/phpcs-calisthenics-rules": "^3.9",
+        "phpunit/phpunit": "^9.5",
+        "qossmic/deptrac-shim": "^0.12.0",
+        "rector/rector": "^0.9.33",
+        "roave/security-advisories": "dev-master",
+        "squizlabs/php_codesniffer": "^3.5",
+        "symfony/phpunit-bridge": "^5.2",
+        "symplify/coding-standard": "^9.2",
+        "symplify/easy-coding-standard": "^9.2",
+        "vimeo/psalm": "^4.6"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "replace": {
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php72": "*"
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        },
+        "phpunit": "phpunit",
+        "psalm": "psalm",
+        "phpcs": "phpcs --standard=PSR12 src/",
+        "rector": "rector process",
+        "deptrac": [
+            "deptrac analyze depfile/modules.yaml",
+            "deptrac analyze depfile/game.yaml",
+            "deptrac analyze depfile/dictionary.yaml",
+            "deptrac analyze depfile/crossword.yaml",
+            "deptrac analyze depfile/shared_kernel.yaml"
+        ],
+        "test": [
+            "@phpunit",
+            "@phpcs",
+            "@psalm",
+            "@rector",
+            "@deptrac"
+        ],
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ]
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "require": "5.2.*"
+        }
+    },
+    "name": "games/crossword",
+    "description": "Crossword game"
+}

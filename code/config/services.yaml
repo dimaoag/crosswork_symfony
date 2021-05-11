@@ -1,0 +1,56 @@
+imports:
+    - { resource: services/ }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            $redisHost: '%env(resolve:REDIS_HOST)%'
+            $redisPort: '%env(resolve:REDIS_PORT)%'
+            $elasticHosts: ['%env(resolve:ELASTIC_HOST_1)%']
+            $dictionaryList: '%dictionary_storage%'
+            $googleApiHost: '%env(resolve:GOOGLE_DICTIONARY_API)%'
+            $wikipediaApiHost: '%env(resolve:WIKIPEDIA_DICTIONARY_API)%'
+            $dictionaryApiHost: '%env(resolve:DICTIONARY_API)%'
+            $crosswordApiHost: '%env(resolve:CROSSWORD_API)%'
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/*'
+        exclude:
+            - '../src/Game/Domain/Model/'
+            - '../src/Game/Domain/Dto/'
+            - '../src/Game/Infrastructure/Repository/DoctrineMigrations/'
+            - '../src/Crossword/Domain/Model/'
+            - '../src/Crossword/Domain/Dto/'
+            - '../src/Dictionary/Domain/Model/'
+            - '../src/Dictionary/Domain/Dto/'
+            - '../src/Dictionary/Application/Service/WordsStoragePopulate.php'
+            - '../src/Dictionary/Application/Service/WordsStorageUpload.php'
+            - '../src/Kernel.php'
+
+    App\Crossword\UI\API\:
+        resource: '../src/Crossword/UI/API'
+        tags: ['controller.service_arguments']
+
+    App\Dictionary\UI\API\:
+        resource: '../src/Dictionary/UI/API'
+        tags: [ 'controller.service_arguments' ]
+
+    App\Swagger\UI\Web\:
+        resource: '../src/Swagger/UI/Web'
+        tags: [ 'controller.service_arguments' ]
+
+    App\Game\UI\Web\:
+        resource: '../src/Game/UI/Web'
+        tags: [ 'controller.service_arguments' ]
+
+    App\Game\Domain\Events\DomainEventsSubscriber:
+        arguments:
+          [ '@command.bus' ]
+        tags:
+            - { name: 'doctrine.event_subscriber' }

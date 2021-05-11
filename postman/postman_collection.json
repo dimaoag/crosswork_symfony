@@ -1,0 +1,480 @@
+{
+	"info": {
+		"_postman_id": "dbf53de0-3299-4723-80ec-5a6448c23699",
+		"name": "Crossword game",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crossword",
+			"item": [
+				{
+					"name": "construct",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Log response errors\", function () {",
+									"    if (pm.response.json().datap && pm.response.json().data.error){",
+									"       console.log(pm.response.json());   ",
+									"    }",
+									"});",
+									"",
+									"pm.test(\"Response must be valid and have a body\", function () {",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									"pm.test(\"Response status is 200\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has a status\", function(){",
+									"    pm.expect(pm.response.json().status).to.be.a('string');",
+									"});",
+									"",
+									"pm.test(\"Response has a data\", function(){",
+									"    pm.expect(pm.response.json().data).to.be.a('array');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-LIMIT",
+								"type": "text",
+								"value": "1"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/crossword/construct/en/normal/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"crossword",
+								"construct",
+								"en",
+								"normal",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "types",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Log response errors\", function () {",
+									"    if (pm.response.json().datap && pm.response.json().data.error){",
+									"       console.log(pm.response.json());   ",
+									"    }",
+									"});",
+									"",
+									"pm.test(\"Response must be valid and have a body\", function () {",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									"pm.test(\"Response status is 200\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has a status\", function(){",
+									"    pm.expect(pm.response.json().status).to.be.a('string');",
+									"});",
+									"",
+									"pm.test(\"Response has a data\", function(){",
+									"    pm.expect(pm.response.json().data).to.be.a('array');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-LIMIT",
+								"type": "text",
+								"value": "1"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/crossword/types",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"crossword",
+								"types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "languages",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Log response errors\", function () {",
+									"    if (pm.response.json().datap && pm.response.json().data.error){",
+									"       console.log(pm.response.json());   ",
+									"    }",
+									"});",
+									"",
+									"pm.test(\"Response must be valid and have a body\", function () {",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									"pm.test(\"Response status is 200\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has a status\", function(){",
+									"    pm.expect(pm.response.json().status).to.be.a('string');",
+									"});",
+									"",
+									"pm.test(\"Response has a data\", function(){",
+									"    pm.expect(pm.response.json().data).to.be.a('array');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/crossword/languages",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"crossword",
+								"languages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dictionary",
+			"item": [
+				{
+					"name": "languages",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Log response errors\", function () {",
+									"    if (pm.response.json().datap && pm.response.json().data.error){",
+									"       console.log(pm.response.json());   ",
+									"    }",
+									"});",
+									"",
+									"pm.test(\"Response must be valid and have a body\", function () {",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									"pm.test(\"Response status is 200\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has a status\", function(){",
+									"    pm.expect(pm.response.json().status).to.be.a('string');",
+									"});",
+									"",
+									"pm.test(\"Response has a data\", function(){",
+									"    pm.expect(pm.response.json().data).to.be.a('array');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/dictionary/languages",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"dictionary",
+								"languages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "success search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Log response errors\", function () {",
+									"    if (pm.response.json().datap && pm.response.json().data.error){",
+									"       console.log(pm.response.json());   ",
+									"    }",
+									"});",
+									"",
+									"pm.test(\"Response must be valid and have a body\", function () {",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									"pm.test(\"Response status is 200\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has a status\", function(){",
+									"    pm.expect(pm.response.json().status).to.be.a('string');",
+									"});",
+									"",
+									"pm.test(\"Response has a data\", function(){",
+									"    pm.expect(pm.response.json().data).to.be.a('array');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-LIMIT",
+								"type": "text",
+								"value": "100"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/dictionary/words/en?mask=....{0,4}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"dictionary",
+								"words",
+								"en"
+							],
+							"query": [
+								{
+									"key": "mask",
+									"value": "....{0,4}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "failed search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Log response errors\", function () {",
+									"    if (pm.response.json().datap && pm.response.json().data.error){",
+									"       console.log(pm.response.json());   ",
+									"    }",
+									"});",
+									"",
+									"pm.test(\"Response must be failed\", function () {",
+									"    pm.response.to.be.error;",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									"pm.test(\"Response status is 500\", function(){",
+									"    pm.response.to.have.status(500);",
+									"});",
+									"",
+									"pm.test(\"Response has a status\", function(){",
+									"    pm.expect(pm.response.json().status).to.be.a('string');",
+									"});",
+									"",
+									"pm.test(\"Response has a data\", function(){",
+									"    pm.expect(pm.response.json().error).to.be.a('object');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-LIMIT",
+								"type": "text",
+								"value": "1"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/dictionary/words/en?mask=11.*",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"dictionary",
+								"words",
+								"en"
+							],
+							"query": [
+								{
+									"key": "mask",
+									"value": "11.*"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Game",
+			"item": [
+				{
+					"name": "player-history",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Log response errors\", function () {",
+									"    if (pm.response.json().datap && pm.response.json().data.error){",
+									"       console.log(pm.response.json());   ",
+									"    }",
+									"});",
+									"",
+									"pm.test(\"Response must be valid and have a body\", function () {",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									"pm.test(\"Response status is 200\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has a status\", function(){",
+									"    pm.expect(pm.response.json().status).to.be.a('string');",
+									"});",
+									"",
+									"pm.test(\"Response has a data\", function(){",
+									"    pm.expect(pm.response.json().data).to.be.a('array');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/game/players-rating",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"game",
+								"players-rating"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "access_token",
+			"value": ""
+		},
+		{
+			"key": "refresh_token",
+			"value": ""
+		}
+	]
+}

@@ -1,0 +1,17 @@
+framework:
+    messenger:
+        # Uncomment this (and the failed transport below) to send failed messages to this transport for later handling.
+        # failure_transport: failed
+
+        transports:
+#             messages: '%env(MESSENGER_TRANSPORT_DSN)%/messages'
+#             events: '%env(MESSENGER_TRANSPORT_DSN)%/events'
+             messages: 'sync://'
+             events: 'sync://'
+            # failed: 'doctrine://default?queue_name=failed'
+
+        routing:
+             'App\Dictionary\Domain\Messages\Message\SearchWordDefinitionMessage': messages
+             'App\Dictionary\Domain\Messages\Message\SaveToStorageMessage': messages
+             'App\Crossword\Domain\Messages\Message\GenerateCrosswordMessage': messages
+             'App\Game\Domain\Events\Event\LevelUpEvent': events
